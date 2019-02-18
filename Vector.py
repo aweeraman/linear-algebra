@@ -1,6 +1,4 @@
-from math import sqrt
-from math import acos
-from math import degrees
+from math import sqrt, acos, degrees
 
 class Vector(object):
 
