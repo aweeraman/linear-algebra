@@ -1,4 +1,6 @@
 from math import sqrt
+from math import acos
+from math import degrees
 
 class Vector(object):
 
@@ -41,3 +43,20 @@ class Vector(object):
 
         except ZeroDivisionError:
             raise Exception('Cannot normalize a zero vector')
+
+    def dot(self, v):
+        return sum([x * y for x, y in zip(self.coordinates, v.coordinates)])
+
+    def angle(self, v, deg=False):
+        dot = self.dot(v)
+        denom = self.magnitude() * v.magnitude()
+
+        if denom == 0.0:
+            raise Exception('Cannot calculate angle with zero vector')
+
+        rad = acos(dot/denom)
+
+        if deg:
+            return degrees(rad)
+
+        return rad
