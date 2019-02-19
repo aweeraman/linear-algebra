@@ -1,4 +1,4 @@
-from math import sqrt, acos, degrees
+from math import sqrt, acos, degrees, pi
 
 class Vector(object):
 
@@ -58,3 +58,12 @@ class Vector(object):
             return degrees(rad)
 
         return rad
+
+    def is_orthogonal_to(self, v, tolerance=1e-10):
+        return abs(self.dot(v)) < tolerance
+
+    def is_parallel_to(self, v, tolerance=1e-10):
+        return ((self.magnitude() < tolerance) or
+                (v.magnitude() < tolerance) or
+                (self.angle(v) == 0) or
+                (self.angle(v) == pi))
